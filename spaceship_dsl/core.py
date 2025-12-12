@@ -19,6 +19,7 @@ class Reactor:
 
 @dataclass
 class Engine:
+    engine_type: str
     thrust: float
     power_consumption: float
     slot_cost: int = 1
@@ -27,6 +28,7 @@ class Engine:
 
 @dataclass
 class LifeSupport:
+    lifeSupport_type: str
     capacity: int
     power_consumption: float
     slot_cost: int = 1
@@ -35,6 +37,7 @@ class LifeSupport:
 
 @dataclass
 class Bridge:
+    bridge_type: str
     control_level: str = "standard"
     power_consumption: float = 0.0
     slot_cost: int = 1

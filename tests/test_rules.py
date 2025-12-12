@@ -103,4 +103,3 @@ def test_print_spec_output_contains_key_metrics(capsys):
     for text in ("Total Slots", "Slots Used", "Total Mass", "Total Power Output", "Power Balance", "Thrust-to-Weight Ratio"):
         assert text in output
         assert text in captured
-

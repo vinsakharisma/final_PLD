@@ -37,7 +37,6 @@ class SimulationTickResult:
     alerts: List[str] = field(default_factory=list)
     log: List[str] = field(default_factory=list)
 
-
 class ShipSimulator:
     def __init__(self, ship: Blueprint):
         if not ship.finalized:
@@ -144,4 +143,3 @@ class ShipSimulator:
             alerts=alerts,
             log=log,
         )
-

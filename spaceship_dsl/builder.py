@@ -86,9 +86,9 @@ class Blueprint:
         self._ensure_slots(shield.slot_cost)
         reactor_types = {r.reactor_type.lower() for r in self.reactors}
         stype = shield.shield_type.lower()
-        if "fusion" in reactor_types and stype == "phase":
+        if "Fusion" in reactor_types and stype == "Phase":
             raise DependencyError("Shield type 'Phase' is incompatible with Reactor 'Fusion'", rule="B-440")
-        if "antimatter" in reactor_types and stype == "magnetic":
+        if "Antimatter" in reactor_types and stype == "Magnetic":
             raise DependencyError("Shield type 'Magnetic' is incompatible with Reactor 'Antimatter'", rule="B-440")
         self.shields.append(shield)
         return self

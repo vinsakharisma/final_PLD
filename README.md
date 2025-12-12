@@ -134,6 +134,7 @@ spaceship_dsl/
   simulator.py   # runtime simulator
   validator.py   # print_spec function
   errors.py      # error types
+  preset.py      # preset for core module
   __init__.py
 
 tests/

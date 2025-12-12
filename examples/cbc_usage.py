@@ -17,15 +17,31 @@ from spaceship_dsl import (
     print_spec,
 )
 
+from spaceship_dsl.preset import (
+    standard_frame,
+    fusion_reactor,
+    antimatter_reactor,
+    ion_engine,
+    plasma_engine,
+    standard_lifeSupport,
+    advandced_lifeSupport,
+    explorer_bridge,
+    command_bridge,
+    magnetic_shield,
+    phase_shield,
+    basic_sensors,
+    advanced_sensors,
+)
+
 
 def main():
     ship = (
         CBCBlueprint.start("CBC-Demo")
-        .set_frame(Frame("F1", total_slots=6, mass=1000))
+        .set_frame(Frame("F1", total_slots=10, mass=1000))
         .add_reactor(Reactor("Fusion", power_output=200, slot_cost=1, mass=100))
-        .add_engine(Engine(thrust=5000, power_consumption=50, slot_cost=1, mass=200))
-        .add_life_support(LifeSupport(capacity=5, power_consumption=5, slot_cost=1, mass=50))
-        .add_bridge(Bridge(power_consumption=2, slot_cost=1, mass=20))
+        .add_engine(ion_engine())
+        .add_life_support(standard_lifeSupport())
+        .add_bridge(explorer_bridge())
         .lock_core_systems()
         .add_shield(Shield("Magnetic", power_consumption=10, slot_cost=1, mass=30))
         .add_sensors(Sensors("Advanced", power_consumption=3, slot_cost=1, mass=15))
