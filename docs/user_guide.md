@@ -16,7 +16,20 @@ from spaceship_dsl import Blueprint, Frame
 ship = Blueprint("Explorer").set_frame(Frame("F1", total_slots=6, mass=1000))
 ```
 
+You can also use a preset that allow you to only choose the name of the blueprint and the frame.
+
+```python
+ship = Blueprint("Odyssey").set_frame(standard_frame("F1"))
+```
+
 ## Adding Core Modules
+
+You can build the core modules in two ways:
+
+1. **Write everything by hand** (full control over every parameter).
+2. **Use presets** that encode the values from the specification.
+
+### Option 1 – Manual components
 
 Add core modules (reactor, engine, life support, bridge) before locking:
 
@@ -32,6 +45,31 @@ ship = (
 )
 ```
 
+### Option 2 - Using preset 
+
+For convenience, the project also defines spec-compliant presets in spaceship_dsl.preset. They hide the numeric details and let you focus on which model you want to install:
+
+```python
+from spaceship_dsl import Blueprint
+from spaceship_dsl.preset import (
+    standard_frame,
+    fusion_reactor,
+    ion_engine,
+    standard_life_support,
+    explorer_bridge,
+)
+
+ship = (
+    Blueprint("Odyssey")
+    .set_frame(standard_frame("F1"))
+    .add_reactor(fusion_reactor())
+    .add_engine(ion_engine())
+    .add_life_support(standard_life_support())
+    .add_bridge(explorer_bridge())
+)
+```
+Both styles are compatible: you can mix presets and manually constructed components in the same blueprint if needed.
+
 ## Locking Core Systems
 
 After adding all core modules, lock them:
@@ -44,7 +82,9 @@ This checks that you have at least one of each: Reactor, Engine, LifeSupport, an
 
 ## Adding Optional Modules
 
-After locking, you can add optional modules (shields, sensors):
+After locking, you can add optional modules (shields, sensors)
+
+Again, you can either write them by hand:
 
 ```python
 from spaceship_dsl import Shield, Sensors
@@ -55,6 +95,19 @@ ship = (
     .add_sensors(Sensors("Advanced", power_consumption=3, slot_cost=1, mass=15))
 )
 ```
+or use presets if you prefer:
+
+```python
+from spaceship_dsl.preset import magnetic_shield, basic_sensors
+
+ship = (
+    ship
+    .add_shield(magnetic_shield())
+    .add_sensors(basic_sensors())
+)
+```
+Presets are just helpers built on top of the same dataclasses, so they do not
+change any of the builder rules or validations.
 
 ## Finalizing
 

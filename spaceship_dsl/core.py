@@ -38,7 +38,6 @@ class LifeSupport:
 @dataclass
 class Bridge:
     bridge_type: str
-    control_level: str = "standard"
     power_consumption: float = 0.0
     slot_cost: int = 1
     mass: float = 0.0
@@ -54,7 +53,7 @@ class Shield:
 
 @dataclass
 class Sensors:
-    sensor_type: str = "standard"
+    sensor_type: str
     power_consumption: float = 0.0
     slot_cost: int = 1
     mass: float = 0.0

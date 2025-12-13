@@ -25,16 +25,16 @@ from spaceship_dsl import (
 )
 
 ship = (
-    Blueprint("Odyssey")
-    .set_frame(Frame("F1", total_slots=6, mass=1000))
-    .add_reactor(Reactor("Fusion", power_output=200, slot_cost=1, mass=100))
-    .add_engine(Engine(thrust=5000, power_consumption=50, slot_cost=1, mass=200))
-    .add_life_support(LifeSupport(capacity=5, power_consumption=5, slot_cost=1, mass=50))
-    .add_bridge(Bridge(power_consumption=2, slot_cost=1, mass=20))
-    .lock_core_systems()
-    .add_shield(Shield("Magnetic", power_consumption=10, slot_cost=1, mass=30))
-    .add_sensors(Sensors("Advanced", power_consumption=3, slot_cost=1, mass=15))
-    .finalize_blueprint()
+  Blueprint("Odyssey")
+  .set_frame(standard_frame("F1"))
+  .add_reactor(fusion_reactor())
+  .add_engine(ion_engine())
+  .add_life_support(advandced_lifeSupport())
+  .add_bridge(explorer_bridge())
+  .lock_core_systems()
+  .add_shield(magnetic_shield())
+  .add_sensors(advanced_sensors())
+  .finalize_blueprint()
 )
 
 print_spec(ship)
@@ -45,20 +45,20 @@ print_spec(ship)
 === Spaceship Specification: Odyssey ===
 
 Frame:
-  Total Slots: 6
-  Slots Used: 6
+  Total Slots: 10
+  Slots Used: 10
   Slots Remaining: 0
 
 Mass:
-  Total Mass: 1415.00 kg
+  Total Mass: 1595.00 kg
 
 Power:
-  Total Power Output: 200.00
-  Total Power Consumption: 70.00
-  Power Balance: 130.00
+  Total Power Output: 1000.00
+  Total Power Consumption: 525.00
+  Power Balance: 475.00
 
 Performance:
-  Thrust-to-Weight Ratio: 0.3602
+  Thrust-to-Weight Ratio: 0.0320
 ```
 
 ## Safety Rules

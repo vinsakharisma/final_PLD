@@ -22,10 +22,10 @@ def advandced_lifeSupport() -> LifeSupport:
     return LifeSupport("Advanced", capacity=20, power_consumption=50.0, slot_cost=2, mass=70.0)
 
 def explorer_bridge() -> Bridge:
-    return Bridge("Explorer", control_level="advanced", power_consumption=75.0, slot_cost=1, mass=50.0)
+    return Bridge("Explorer", power_consumption=75.0, slot_cost=1, mass=50.0)
 
 def command_bridge() -> Bridge:
-    return Bridge("Command", control_level="standard", power_consumption=75.0, slot_cost=1, mass=60.0)
+    return Bridge("Command", power_consumption=75.0, slot_cost=1, mass=60.0)
 
 def magnetic_shield() -> Shield:
     return Shield("Magnetic", power_consumption=100.0, slot_cost=1, mass=40.0)
